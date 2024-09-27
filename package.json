@@ -1,0 +1,29 @@
+{
+  "name": "website",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "prepare": "lefthook install",
+    "watch:css": "tailwindcss -i ./src/style.css -o ./src/tw.css --watch",
+    "build:css": "tailwindcss -i ./src/style.css -o ./src/tw.css",
+    "build:vite": "tsc && vite build",
+    "start": "vite",
+    "dev": "npm-run-all --parallel watch:css start",
+    "build": "npm-run-all build:css build:vite",
+    "preview": "vite preview",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
+    "eslint": "^9.9.0",
+    "eslint-plugin-wc": "^2.1.1",
+    "lefthook": "^1.7.14",
+    "npm-run-all": "^4.1.5",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss": "^3.4.10",
+    "typescript": "^5.5.3",
+    "vite": "^5.4.1"
+  }
+}

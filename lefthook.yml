@@ -1,0 +1,6 @@
+pre-commit:
+  commands:
+    lint:
+      run: yarn lint --max-warnings 0
+    typecheck:
+      run: yarn tsc --noEmit

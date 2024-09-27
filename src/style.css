@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: 'lilita';
+    font-display: block;
+    src: url(fonts/lilita.ttf) format('truetype');
+  }
+  .font-lilita { font-size: 1.1em; } /* Looks better bigger. `em` to scale from parent, not root. */
+
+  @font-face {
+    font-family: 'manrope';
+    font-display: block;
+    src: url(fonts/manrope.ttf) format('truetype');
+  }
+
+  @font-face {
+    font-family: 'gochi';
+    font-display: block;
+    src: url(fonts/gochi.ttf) format('truetype');
+  }
+  .font-gochi { font-size: 1.1em; } /* Looks better bigger. `em` to scale from parent, not root. */
+
+  * {
+    @apply border-clay text-clay;
+  }
+
+  html {
+    @apply font-manrope;
+  }
+
+  .box {
+    box-shadow: 3px 3px 0px 0px #1f2937;
+    @apply border-2;
+  }
+
+  .press {
+    @apply transition-all duration-100 hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none;
+  }
+
+  .content {
+    @apply mx-auto max-w-[900px] px-8 2xl:max-w-[1000px]
+  }
+}
