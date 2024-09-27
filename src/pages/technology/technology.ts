@@ -17,17 +17,17 @@ customElements.define(
 
     <slot class='md:hidden'></slot>
 
-    <p is='x-p'> 
+    <x-p> 
       <b>Eagle eyed.</b> By focusing in on what a business really needs, we can build thoughtful and practical solutions that solve real problems.
-    </p>
+    </x-p>
 
-    <p is='x-p'> 
+    <x-p> 
       <b>Wise as an owl.</b> Our deep understanding of web technology allows us to dive into complex problems, with the right tools for the job at hand. 
-    </p>
+    </x-p>
 
-    <p is='x-p'> 
+    <x-p> 
       <b>Like a duck to water.</b> We navigate digital landscapes of all shapes and sizes, allowing us to swiftly adapt to new challenges. 
-    </p>
+    </x-p>
   </div>
 </div>
 <x-marquee></x-marquee>

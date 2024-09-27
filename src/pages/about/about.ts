@@ -15,13 +15,13 @@ customElements.define(
 
     <img class='mx-auto h-64 xs:h-80 md:hidden' src=${james} alt="James" />
 
-    <p is='x-p'>
+    <x-p>
       I'm James, a software developer and designer based in Montréal. I love building things, solving interesting problems, and tinkering with new tech. 
-    </p>
+    </x-p>
 
-    <p is='x-p'>
+    <x-p>
       I started Digital Animal to help businesses elevate their presence on the web. From portfolio websites to complex applications - our small team of experts can help.
-    </p>
+    </x-p>
 
     <div class='flex justify-center pt-2 md:justify-start'>
       <a is='x-link' target='_blank' href='https://github.com/jradam'>
