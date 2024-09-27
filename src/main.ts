@@ -18,6 +18,8 @@ import './tw.css'
 // TODO: Evaluate using Axe-core
 // TODO: Get perfect score with Lighthouse, heytony etc
 // TODO: aria labels
+// TODO: Enforce double quotes for HTML attributes
+// TODO: Not loading on iOS
 
 document.body.innerHTML = `
 <main class='absolute inset-0 h-screen overflow-y-auto overflow-x-hidden bg-mustard'>
