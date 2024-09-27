@@ -26,5 +26,4 @@ customElements.define(
       })
     }
   },
-  { extends: 'section' },
 )

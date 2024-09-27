@@ -8,5 +8,4 @@ customElements.define(
 `
     }
   },
-  { extends: 'section' },
 )

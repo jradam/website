@@ -43,5 +43,4 @@ customElements.define(
       putTemplateInSlots(this)
     }
   },
-  { extends: 'section' },
 )

@@ -24,18 +24,18 @@ import './tw.css'
 document.body.innerHTML = `
 <main class='absolute inset-0 h-screen overflow-y-auto overflow-x-hidden bg-mustard'>
 
-  <section is='page-landing' id='landing'></section>
+  <page-landing id='landing'></page-landing>
 
-  <section is='page-about' id='about'></section>
+  <page-about id='about'></page-about>
 
-  <section is='page-testimonials'></section>
+  <page-testimonials></page-testimonials>
 
-  <section is='page-technology'></section>
+  <page-technology></page-technology>
 
   <!-- TODO: Add projects section -->
-  <!-- <section is='page-projects' id='projects'></section> -->
+  <!-- <page-projects id='projects'></page-projects> -->
 
-  <section is='page-contact' id='contact'></section>
+  <page-contact id='contact'></page-contact>
 
 </main>
 <x-loading></x-loading>

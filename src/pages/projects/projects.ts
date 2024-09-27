@@ -14,5 +14,4 @@ customElements.define(
 `
     }
   },
-  { extends: 'section' },
 )

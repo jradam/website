@@ -43,5 +43,4 @@ customElements.define(
 `
     }
   },
-  { extends: 'section' },
 )
