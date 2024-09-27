@@ -34,7 +34,7 @@ customElements.define(
       this.innerHTML = `
 <div class='relative h-60 w-60 rounded-md border-2 bg-white p-20 sm:h-[400px] sm:w-[400px]'>
   <div class='absolute -left-4 -top-5 -rotate-3 rounded-md border-2 px-4 py-2 font-lilita text-2xl text-white sm:text-3xl' style="background-color: ${color};">${children}</div>
-  <button is='x-button' class='absolute -bottom-2 -right-2 bg-purple'>Learn more</button>
+  <button class='primary' class='absolute -bottom-2 -right-2 bg-purple'>Learn more</button>
 </div>
 `
 

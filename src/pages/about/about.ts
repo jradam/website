@@ -25,7 +25,7 @@ customElements.define(
 
     <div class='flex justify-center pt-2 md:justify-start'>
       <a is='x-link' target='_blank' href='https://github.com/jradam'>
-        <button is='x-button' class='text-balance flex items-center gap-x-2 px-2'>
+        <button class='secondary text-balance flex items-center gap-x-2 px-2'>
           <img class='w-6' src="${github}" />
           <div>
             <p>Follow me on GitHub</p>

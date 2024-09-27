@@ -1,4 +1,3 @@
-import './comps/button'
 import './comps/paragraph'
 import './comps/error'
 import './comps/loading'

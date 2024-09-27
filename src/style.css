@@ -44,3 +44,12 @@
     @apply mx-auto max-w-[900px] px-8 2xl:max-w-[1000px]
   }
 }
+
+@layer components {
+  button.secondary {
+    @apply box press rounded-md px-4 py-2 font-lilita leading-tight bg-white
+  }
+  button.primary {
+    @apply box press rounded-md px-4 py-2 font-lilita leading-tight bg-purple
+  }
+}
