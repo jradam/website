@@ -1,15 +1,12 @@
 // Select something in the DOM
-export function select<T extends HTMLElement>(
-  _type: new () => T, // Make the type required by having it as a parameter
-  selector: string,
-): T {
+export function select<T extends HTMLElement>(selector: string): T {
   const element = document.querySelector<T>(selector)
   if (!element) throw new Error(`element "${selector}" not found`)
   return element
 }
 
 // Check the DOM for duplicate IDs
-export function check(): void {
+export function checkForDuplicateIDs(): void {
   const elements = document.querySelectorAll('[id]')
   const ids = new Set()
 

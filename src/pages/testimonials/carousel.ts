@@ -109,7 +109,7 @@ customElements.define(
 
     connectedCallback(): void {
       const classes =
-        'relative mx-auto block space-y-4 overflow-x-hidden sm:space-y-6'
+        'relative mx-auto space-y-4 overflow-x-hidden sm:space-y-6'
       this.className = twMerge(classes, this.className)
 
       this.innerHTML = `

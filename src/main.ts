@@ -1,15 +1,14 @@
-import './comps/paragraph'
 import './comps/error'
 import './comps/loading'
+import './comps/paragraph'
 import './comps/title'
-import './pages/about/about'
-import './pages/contact'
-import './pages/landing/landing'
-import './pages/projects/projects'
-import './pages/technology/technology'
-import './pages/testimonials/testimonials'
-import { check, select } from './scripts/helpers'
-import scroll from './scripts/scroll'
+import pageAbout from './pages/about/about'
+import pageContact from './pages/contact'
+import pageLanding from './pages/landing/landing'
+import pageTechnology from './pages/technology/technology'
+import pageTestimonials from './pages/testimonials/testimonials'
+import { checkForDuplicateIDs } from './scripts/helpers'
+import { scrollEffects } from './scripts/scroll'
 import './tw.css'
 
 // TODO: Add simple contact form
@@ -23,26 +22,26 @@ import './tw.css'
 document.body.innerHTML = `
 <main class='absolute inset-0 h-screen overflow-y-auto overflow-x-hidden bg-mustard'>
 
-  <page-landing></page-landing>
-
-  <page-about></page-about>
-
-  <page-testimonials></page-testimonials>
-
-  <page-technology></page-technology>
-
-  <!-- TODO: Add projects section -->
-  <!-- <page-projects id='projects'></page-projects> -->
-
-  <page-contact></page-contact>
+  <section id='pageLanding'></section>
+  <section id='pageAbout'></section>
+  <section id='pageTestimonials'></section>
+  <section id='pageTechnology'></section>
+  <!-- TODO: <section id='pageProjects'></section> -->
+  <section id='pageContact'></section>
 
 </main>
+
 <x-loading></x-loading>
 <x-error></x-error>
 `
 
-const container = select(HTMLElement, 'main')
-const parallax = select(HTMLDivElement, '#page-landing')
-scroll(container, parallax)
+pageLanding()
+pageAbout()
+pageTestimonials()
+pageTechnology()
+// TODO: pageProjects()
+pageContact()
 
-document.addEventListener('DOMContentLoaded', check) // Check the DOM for duplicate IDs
+scrollEffects()
+
+document.addEventListener('DOMContentLoaded', checkForDuplicateIDs)

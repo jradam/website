@@ -1,7 +1,9 @@
-export default function scroll(
-  container: HTMLElement,
-  landing: HTMLElement,
-): void {
+import { select } from './helpers'
+
+export function scrollEffects(): void {
+  const container = select('main')
+  const landing = select('#pageLanding')
+
   let scrollPos = 0
 
   const handleScroll = (): void => {

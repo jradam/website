@@ -1,37 +1,37 @@
-import { putTemplateInSlots } from '../../scripts/helpers'
+import { putTemplateInSlots, select } from '../../scripts/helpers'
 import './marquee'
 import owl from './owl.png'
 
-customElements.define(
-  'page-technology',
-  class extends HTMLElement {
-    connectedCallback(): void {
-      this.outerHTML = `
-<section id='page-technology' class='bg-white'>
-  <x-title>What we do</x-title>
-  <div class='content flex items-center gap-x-10 pb-16 pt-32'>
-    <slot class='hidden md:block'></slot>
+export default function pageTechnology(): void {
+  const page = select('#pageTechnology')
 
-    <div class='mx-auto space-y-6 md:space-y-3'>
-      <h3 class='text-balance text-center font-lilita text-3xl md:text-left'>Experts in our field</h3>
+  page.className = 'bg-white'
 
-      <slot class='md:hidden'></slot>
+  page.innerHTML = `
+<x-title>What we do</x-title>
+<div class='content flex items-center gap-x-10 pb-16 pt-32'>
+  <slot class='hidden md:block'></slot>
 
-      <x-p> 
-        <b>Eagle eyed.</b> By focusing in on what a business really needs, we can build thoughtful and practical solutions that solve real problems.
-      </x-p>
+  <div class='mx-auto space-y-6 md:space-y-3'>
+    <h3 class='text-balance text-center font-lilita text-3xl md:text-left'>Experts in our field</h3>
 
-      <x-p> 
-        <b>Wise as an owl.</b> Our deep understanding of web technology allows us to dive into complex problems, with the right tools for the job at hand. 
-      </x-p>
+    <slot class='md:hidden'></slot>
 
-      <x-p> 
-        <b>Like a duck to water.</b> We navigate digital landscapes of all shapes and sizes, allowing us to swiftly adapt to new challenges. 
-      </x-p>
-    </div>
+    <x-p> 
+      <b>Eagle eyed.</b> By focusing in on what a business really needs, we can build thoughtful and practical solutions that solve real problems.
+    </x-p>
+
+    <x-p> 
+      <b>Wise as an owl.</b> Our deep understanding of web technology allows us to dive into complex problems, with the right tools for the job at hand. 
+    </x-p>
+
+    <x-p> 
+      <b>Like a duck to water.</b> We navigate digital landscapes of all shapes and sizes, allowing us to swiftly adapt to new challenges. 
+    </x-p>
   </div>
-  <x-marquee></x-marquee>
-</section>
+</div>
+
+<x-marquee></x-marquee>
 
 <template>
   <div class='relative mx-auto mb-8 aspect-square h-36 flex-shrink-0 md:mb-0'>
@@ -41,7 +41,5 @@ customElements.define(
 </template>
 `
 
-      putTemplateInSlots(this)
-    }
-  },
-)
+  putTemplateInSlots(page)
+}
