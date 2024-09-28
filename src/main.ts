@@ -23,9 +23,9 @@ import './tw.css'
 document.body.innerHTML = `
 <main class='absolute inset-0 h-screen overflow-y-auto overflow-x-hidden bg-mustard'>
 
-  <page-landing id='landing'></page-landing>
+  <page-landing></page-landing>
 
-  <page-about id='about'></page-about>
+  <page-about></page-about>
 
   <page-testimonials></page-testimonials>
 
@@ -34,7 +34,7 @@ document.body.innerHTML = `
   <!-- TODO: Add projects section -->
   <!-- <page-projects id='projects'></page-projects> -->
 
-  <page-contact id='contact'></page-contact>
+  <page-contact></page-contact>
 
 </main>
 <x-loading></x-loading>
@@ -42,7 +42,7 @@ document.body.innerHTML = `
 `
 
 const container = select(HTMLElement, 'main')
-const parallax = select(HTMLDivElement, '#landing')
+const parallax = select(HTMLDivElement, '#page-landing')
 scroll(container, parallax)
 
 document.addEventListener('DOMContentLoaded', check) // Check the DOM for duplicate IDs
