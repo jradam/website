@@ -7,7 +7,9 @@ customElements.define(
       const classes =
         'max-w-80 ml-4 block xs:ml-0 xs:text-justify md:max-w-none md:text-left'
       this.className = twMerge(classes, this.className)
-      this.innerHTML = `<span class='mr-1 font-bold text-purple'>&#62;</span>${this.innerHTML.trim()}`
+      this.innerHTML = `
+<span class='mr-1 font-bold text-purple'>&#62;</span><p class='inline'>${this.innerHTML.trim()}</p>
+`
     }
   },
 )

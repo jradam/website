@@ -25,7 +25,7 @@ export default function pageAbout(): void {
     </x-p>
 
     <div class='flex justify-center pt-2 md:justify-start'>
-      <a is='x-link' target='_blank' href='https://github.com/jradam'>
+      <a target='_blank' href='https://github.com/jradam'>
         <button class='secondary text-balance flex items-center gap-x-2 px-2'>
           <img class='w-6' src="${github}" />
           <div>

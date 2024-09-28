@@ -8,22 +8,20 @@ import { twMerge } from 'tailwind-merge'
 // TODO: Add animations to the quote marks and image when carousel moves
 // TODO: Change arrows to inline svgs
 
-customElements.define(
-  'carousel-arrow',
-  class extends HTMLButtonElement {
-    connectedCallback(): void {
-      const right = this.getAttribute('side') === 'right'
+function setupCarouselArrow(
+  button: HTMLButtonElement,
+  side: 'left' | 'right',
+): void {
+  const right = side === 'right'
 
-      this.className =
-        'relative select-none disabled:pointer-events-none disabled:opacity-50'
-      this.innerHTML = `
-<img class='absolute left-[3px] top-[3px] drag-none' src=${right ? arrowRightShadow : arrowLeftShadow} />
-<img class='press relative drag-none' src=${right ? arrowRight : arrowLeft} />
-`
-    }
-  },
-  { extends: 'button' },
-)
+  button.className =
+    'relative select-none disabled:pointer-events-none disabled:opacity-50'
+
+  button.innerHTML = `
+    <img class='absolute left-[3px] top-[3px] drag-none' src=${right ? arrowRightShadow : arrowLeftShadow} />
+    <img class='press relative drag-none' src=${right ? arrowRight : arrowLeft} />
+  `
+}
 
 customElements.define(
   'carousel-dot',
@@ -115,17 +113,23 @@ customElements.define(
       this.innerHTML = `
 <div id='slides' class='flex transition-transform duration-500'>${this.innerHTML}</div>
 <div class='mx-auto flex w-fit items-center gap-x-10 py-3'>
-  <button is='carousel-arrow'></button>
+  <button></button>
   <div id='dots' class='mx-auto flex'></div>
-  <button is='carousel-arrow' side='right'></button>
+  <button></button>
 </div>
 `
 
       this.#leftButton = this.querySelector('button:first-of-type')
-      this.#rightButton = this.querySelector('button:last-of-type')
+      if (this.#leftButton) {
+        setupCarouselArrow(this.#leftButton, 'left')
+        this.#leftButton.addEventListener('click', () => this.#move(-1))
+      }
 
-      this.#leftButton?.addEventListener('click', () => this.#move(-1))
-      this.#rightButton?.addEventListener('click', () => this.#move(1))
+      this.#rightButton = this.querySelector('button:last-of-type')
+      if (this.#rightButton) {
+        setupCarouselArrow(this.#rightButton, 'right')
+        this.#rightButton.addEventListener('click', () => this.#move(1))
+      }
 
       this.#slides = this.querySelectorAll('x-slide').length
       this.#updateButtons()
