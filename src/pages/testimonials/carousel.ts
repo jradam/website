@@ -7,6 +7,7 @@ import { twMerge } from 'tailwind-merge'
 // TODO: Add left and right fades for the scroll
 // TODO: Add animations to the quote marks and image when carousel moves
 // TODO: Change arrows to inline svgs
+// TODO: Change carousel-dot to button elements
 
 function setupCarouselArrow(
   button: HTMLButtonElement,
@@ -25,7 +26,7 @@ function setupCarouselArrow(
 
 customElements.define(
   'carousel-dot',
-  class extends HTMLButtonElement {
+  class extends HTMLElement {
     connectedCallback(): void {
       this.className = 'box press mx-1 h-4 w-4 rounded-full bg-white'
       if (this.hasAttribute('active')) this.#active()
@@ -52,7 +53,6 @@ customElements.define(
       }
     }
   },
-  { extends: 'button' },
 )
 
 customElements.define(
@@ -62,7 +62,7 @@ customElements.define(
     #slides = 0
     #leftButton: HTMLButtonElement | null = null
     #rightButton: HTMLButtonElement | null = null
-    #dots: HTMLButtonElement[] = []
+    #dots: HTMLElement[] = []
 
     #updateButtons(): void {
       if (this.#leftButton) this.#leftButton.disabled = this.#index <= 0
@@ -72,7 +72,7 @@ customElements.define(
 
     #createDots(): void {
       for (let i = 0; i < this.#slides; i++) {
-        const button = document.createElement('button', { is: 'carousel-dot' })
+        const button = document.createElement('carousel-dot')
         button.addEventListener('click', () => this.#move(i - this.#index))
         this.#dots.push(button)
       }
