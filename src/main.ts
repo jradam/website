@@ -8,7 +8,7 @@ import pageLanding from './pages/landing/landing'
 import pageTechnology from './pages/technology/technology'
 import pageTestimonials from './pages/testimonials/testimonials'
 import { checkForDuplicateIDs } from './scripts/helpers'
-import { scrollEffects } from './scripts/scroll'
+import { saveScroll } from './scripts/scroll'
 import './tw.css'
 
 // TODO: Add simple contact form
@@ -42,6 +42,6 @@ pageTechnology()
 // TODO: pageProjects()
 pageContact()
 
-scrollEffects()
+saveScroll()
 
 document.addEventListener('DOMContentLoaded', checkForDuplicateIDs)
