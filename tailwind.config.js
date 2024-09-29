@@ -52,4 +52,7 @@ export default {
       })
     }),
   ],
+  future: {
+    hoverOnlyWhenSupported: true, // Fix buttons getting stuck down on mobile
+  },
 }
