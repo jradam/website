@@ -36,7 +36,7 @@ export default function pageTechnology(): void {
 <template>
   <div class='relative mx-auto mb-8 aspect-square h-36 flex-shrink-0 md:mb-0'>
     <div class='absolute left-0 right-0 top-10 m-auto aspect-square h-28 rounded-full border-2 bg-purple'></div>
-    <img class='absolute top-2' src='${owl}' />
+    <img alt='An owl in a purple circle' class='absolute top-2' src='${owl}' />
   </div>
 </template>
 `

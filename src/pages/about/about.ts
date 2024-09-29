@@ -14,7 +14,7 @@ export default function pageAbout(): void {
   <div class='space-y-6 md:space-y-3'>
     <h3 class='text-balance text-center font-lilita text-3xl md:text-left'>Nice to meet you! <div class='inline-block origin-bottom-right animate-wave'>👋</div></h3>
 
-    <img class='mx-auto h-64 xs:h-80 md:hidden' src=${james} alt="James" />
+    <img alt='James from Digital Animal' class='mx-auto h-64 xs:h-80 md:hidden' src=${james} alt="James" />
 
     <x-p>
       I'm James, a software developer and designer based in Montréal. I love building things, solving interesting problems, and tinkering with new tech. 
@@ -26,12 +26,12 @@ export default function pageAbout(): void {
 
     <div class='flex justify-center pt-2 md:justify-start'>
       <a target='_blank' href='https://github.com/jradam'>
-        <button class='secondary text-balance flex items-center gap-x-2 px-2'>
-          <img class='w-6' src="${github}" />
+        <button class='box press text-balance flex items-center gap-x-2 rounded-md bg-white px-2 py-2 font-lilita leading-tight'>
+          <img alt='The GitHub logo' class='w-6' src="${github}" />
           <div>
             <p>Follow me on GitHub</p>
           </div>
-          <img class='w-5' src="${external}" />
+          <img alt='An arrow indicating an external link' class='w-5' src="${external}" />
         </button>
       </a>
     </div>

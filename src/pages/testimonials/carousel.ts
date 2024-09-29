@@ -20,8 +20,8 @@ function setupCarouselArrow(
     'relative select-none disabled:pointer-events-none disabled:opacity-50'
 
   button.innerHTML = `
-    <img class='absolute left-[3px] top-[3px] drag-none' src=${right ? arrowRightShadow : arrowLeftShadow} />
-    <img class='press relative drag-none' src=${right ? arrowRight : arrowLeft} />
+    <img alt='The shadow of a carousel arrow' class='absolute left-[3px] top-[3px] drag-none' src=${right ? arrowRightShadow : arrowLeftShadow} />
+    <img alt='An arrow to move the carousel' class='press relative drag-none' src=${right ? arrowRight : arrowLeft} />
   `
 }
 
@@ -112,9 +112,9 @@ customElements.define(
       this.innerHTML = `
 <div id='slides' class='flex transition-transform duration-500'>${this.innerHTML}</div>
 <div class='mx-auto flex w-fit items-center gap-x-10 py-3'>
-  <button></button>
+  <button aria-label='Move carousel left'></button>
   <div id='dots' class='mx-auto flex'></div>
-  <button></button>
+  <button aria-label='Move carousel right'></button>
 </div>
 `
 

@@ -15,9 +15,7 @@ import './tw.css'
 // TODO: Add CV to About section
 // TODO: Evaluate using Axe-core
 // TODO: Get perfect score with Lighthouse, heytony etc
-// TODO: aria labels
 // TODO: Enforce double quotes for HTML attributes
-// TODO: Not loading on iOS
 
 document.body.innerHTML = `
 <main class='h-dvh absolute inset-0 overflow-y-auto overflow-x-hidden bg-mustard'>
