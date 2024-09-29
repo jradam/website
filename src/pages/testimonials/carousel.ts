@@ -3,6 +3,7 @@ import arrowRight from './arrow-right.png'
 import arrowLeftShadow from './arrow-left-shadow.png'
 import arrowRightShadow from './arrow-right-shadow.png'
 import { twMerge } from 'tailwind-merge'
+import { select } from '../../scripts/helpers'
 
 // TODO: Add left and right fades for the scroll
 // TODO: Add animations to the quote marks and image when carousel moves
@@ -77,7 +78,7 @@ customElements.define(
         this.#dots.push(button)
       }
 
-      this.querySelector('#dots')?.append(...this.#dots)
+      select(this, '#dots').append(...this.#dots)
     }
 
     #updateDots(): void {
@@ -94,12 +95,10 @@ customElements.define(
       const newIndex = this.#index + how
       if (newIndex < 0 || newIndex > this.#slides - 1) return
 
-      const slidesContainer = this.querySelector<HTMLElement>('#slides')
+      const slidesContainer = select(this, '#slides')
 
       this.#index = newIndex
-      if (slidesContainer) {
-        slidesContainer.style.transform = `translateX(-${this.#index * 100}%)`
-      }
+      slidesContainer.style.transform = `translateX(-${this.#index * 100}%)`
 
       this.#updateButtons()
       this.#updateDots()
@@ -119,17 +118,13 @@ customElements.define(
 </div>
 `
 
-      this.#leftButton = this.querySelector('button:first-of-type')
-      if (this.#leftButton) {
-        setupCarouselArrow(this.#leftButton, 'left')
-        this.#leftButton.addEventListener('click', () => this.#move(-1))
-      }
+      this.#leftButton = select<HTMLButtonElement>(this, 'button:first-of-type')
+      setupCarouselArrow(this.#leftButton, 'left')
+      this.#leftButton.addEventListener('click', () => this.#move(-1))
 
-      this.#rightButton = this.querySelector('button:last-of-type')
-      if (this.#rightButton) {
-        setupCarouselArrow(this.#rightButton, 'right')
-        this.#rightButton.addEventListener('click', () => this.#move(1))
-      }
+      this.#rightButton = select<HTMLButtonElement>(this, 'button:last-of-type')
+      setupCarouselArrow(this.#rightButton, 'right')
+      this.#rightButton.addEventListener('click', () => this.#move(1))
 
       this.#slides = this.querySelectorAll('x-slide').length
       this.#updateButtons()

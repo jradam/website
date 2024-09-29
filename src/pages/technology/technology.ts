@@ -3,7 +3,7 @@ import './marquee'
 import owl from './owl.png'
 
 export default function pageTechnology(): void {
-  const page = select('#pageTechnology')
+  const page = select(document, '#pageTechnology')
 
   page.className = 'bg-white'
 

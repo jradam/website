@@ -1,3 +1,5 @@
+import { select } from '../../scripts/helpers'
+
 customElements.define(
   'x-typer',
   class extends HTMLElement {
@@ -40,8 +42,7 @@ customElements.define(
     }
 
     type(): void {
-      const typer = this.querySelector('#typer')
-      if (!typer || !this.#sentences) return
+      const typer = select(this, '#typer')
 
       const SPEED = 100
       const PAUSE = 3000

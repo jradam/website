@@ -1,7 +1,7 @@
 import { select } from '../scripts/helpers'
 
 export default function pageContact(): void {
-  const page = select('#pageContact')
+  const page = select(document, '#pageContact')
 
   page.innerHTML = `
 <x-title>Get in touch</x-title>

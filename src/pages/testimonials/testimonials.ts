@@ -7,7 +7,7 @@ import './quote'
 // TODO: Add ability to swipe
 
 export default function pageTestimonials(): void {
-  const page = select('#pageTestimonials')
+  const page = select(document, '#pageTestimonials')
 
   page.innerHTML = `
 <x-title>A word from our clients</x-title>

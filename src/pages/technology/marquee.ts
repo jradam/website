@@ -1,4 +1,4 @@
-import { getFileName } from '../../scripts/helpers'
+import { getFileName, select } from '../../scripts/helpers'
 import css from './tech/CSS.svg'
 import digitalOcean from './tech/Digital_Ocean.svg'
 import figma from './tech/Figma.svg'
@@ -65,9 +65,7 @@ customElements.define(
 
     #set(images: string[]): HTMLSpanElement {
       const span = document.createElement('span')
-      images.forEach((image) => {
-        span.appendChild(this.#item(image))
-      })
+      images.forEach((image) => span.appendChild(this.#item(image)))
       return span
     }
 
@@ -78,12 +76,6 @@ customElements.define(
 .animate-marquee { animation: marquee ${this.#SPEED}s linear infinite; }
 `
       document.head.appendChild(this.#animation)
-    }
-
-    #select(selector: string): HTMLDivElement {
-      const element = this.querySelector<HTMLDivElement>(selector)
-      if (!element) throw new Error(`Element not found: ${selector}`)
-      return element
     }
 
     connectedCallback(): void {
@@ -103,11 +95,11 @@ customElements.define(
   </div>
 `
 
-      const slider = this.#select('#slider')
-      const rightPortal = this.#select('#rightPortal')
-      const leftCover = this.#select('#leftCover')
-      const rightCover = this.#select('#rightCover')
-      const container = this.#select('#container')
+      const slider = select(this, '#slider')
+      const rightPortal = select(this, '#rightPortal')
+      const leftCover = select(this, '#leftCover')
+      const rightCover = select(this, '#rightCover')
+      const container = select(this, '#container')
 
       for (let i = 0; i < this.#WIDTH; i++)
         slider.appendChild(this.#set(this.#tech))

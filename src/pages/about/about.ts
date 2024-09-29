@@ -4,7 +4,7 @@ import james from './james.png'
 import { select } from '../../scripts/helpers'
 
 export default function pageAbout(): void {
-  const page = select('#pageAbout')
+  const page = select(document, '#pageAbout')
 
   page.className = 'relative bg-white'
 

@@ -2,7 +2,7 @@ import { select } from '../../scripts/helpers'
 import './cards'
 
 export default function pageProjects(): void {
-  const page = select('#pageProjects')
+  const page = select(document, '#pageProjects')
 
   page.innerHTML = `
 <x-title>Our projects</x-title>

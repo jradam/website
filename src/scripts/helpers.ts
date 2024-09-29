@@ -1,6 +1,9 @@
-// Select something in the DOM
-export function select<T extends HTMLElement>(selector: string): T {
-  const element = document.querySelector<T>(selector)
+// Select something in the DOM with error handling
+export function select<T extends HTMLElement>(
+  node: ParentNode,
+  selector: string,
+): T {
+  const element = node.querySelector<T>(selector)
   if (!element) throw new Error(`element "${selector}" not found`)
   return element
 }
