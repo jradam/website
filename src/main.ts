@@ -20,7 +20,7 @@ import './tw.css'
 // TODO: Not loading on iOS
 
 document.body.innerHTML = `
-<main class='absolute inset-0 h-screen overflow-y-auto overflow-x-hidden bg-mustard'>
+<main class='h-dvh absolute inset-0 overflow-y-auto overflow-x-hidden bg-mustard'>
 
   <section id='pageLanding'></section>
   <section id='pageAbout'></section>

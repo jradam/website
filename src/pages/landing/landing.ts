@@ -6,7 +6,7 @@ export default function pageLanding(): void {
   const page = select(document, '#pageLanding')
 
   page.innerHTML = `
-<div id='parallax' class='flex h-screen flex-col items-center justify-center gap-y-5 will-change-transform sm:gap-y-7'>
+<div id='parallax' class='h-dvh flex flex-col items-center justify-center gap-y-5 will-change-transform sm:gap-y-7'>
   <img class='w-5/6 max-w-[700px] drag-none xs:w-9/12 2xl:max-w-[800px]' src=${logo} />
   <x-typer class='font-lilita text-base xxs:text-lg xs:text-xl sm:text-2xl md:text-3xl'></x-typer>
 
