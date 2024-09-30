@@ -6,7 +6,7 @@ export default function pageLanding(): void {
   const page = select(document, '#pageLanding')
 
   page.innerHTML = `
-<div id='parallax' class='h-dvh flex flex-col items-center justify-center gap-y-5 will-change-transform sm:gap-y-7'>
+<div id='parallax' class='h-dvh flex transform-none flex-col items-center justify-center gap-y-5 will-change-transform sm:transform-gpu sm:gap-y-7'>
   <img alt='The Digital Animal logo' class='w-5/6 max-w-[700px] drag-none xs:w-9/12 2xl:max-w-[800px]' src=${logo} />
   <x-typer class='font-lilita text-base xxs:text-lg xs:text-xl sm:text-2xl md:text-3xl'></x-typer>
 
@@ -29,11 +29,14 @@ export default function pageLanding(): void {
   const container = select(document, 'main')
 
   const updateParallax = (): void => {
-    parallax.style.transform = `translate3d(0, ${container.scrollTop * 0.5}px, 0)`
+    parallax.style.setProperty(
+      '--tw-translate-y',
+      `${container.scrollTop * 0.5}px`,
+    )
   }
   const update = (): void => {
     requestAnimationFrame(updateParallax)
   }
 
-  container.addEventListener('scroll', update)
+  container.addEventListener('scroll', update, { passive: true })
 }
