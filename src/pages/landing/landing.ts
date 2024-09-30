@@ -30,10 +30,14 @@ export default function pageLanding(): void {
   let scrollPos = 0
 
   const update = (): void => {
-    if (scrollPos !== container.scrollTop) {
-      parallax.style.transform = `translateY(${container.scrollTop * 0.5}px)`
-      scrollPos = container.scrollTop
+    const newPos = container.scrollTop
+
+    if (scrollPos !== newPos) {
+      // translate3d to trigger hardware acceleration
+      parallax.style.transform = `translate3d(0, ${newPos * 0.5}px, 0)`
+      scrollPos = newPos
     }
+
     requestAnimationFrame(update)
   }
 
