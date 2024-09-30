@@ -27,20 +27,13 @@ export default function pageLanding(): void {
   // The parallax animation
   const parallax = select(page, '#parallax')
   const container = select(document, 'main')
-  let scrollPos = 0
 
+  const updateParallax = (): void => {
+    parallax.style.transform = `translate3d(0, ${container.scrollTop * 0.5}px, 0)`
+  }
   const update = (): void => {
-    const newPos = container.scrollTop
-
-    if (scrollPos !== newPos) {
-      // translate3d to trigger hardware acceleration
-      parallax.style.transform = `translate3d(0, ${newPos * 0.5}px, 0)`
-      scrollPos = newPos
-    }
-
-    requestAnimationFrame(update)
+    requestAnimationFrame(updateParallax)
   }
 
-  // Start the animation
-  requestAnimationFrame(update)
+  container.addEventListener('scroll', update)
 }
