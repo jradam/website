@@ -1,39 +1,54 @@
 import { select } from '../scripts/helpers'
 import '../comps/input'
 import emailjs from '@emailjs/browser'
+import { validate } from 'email-validator'
 
-// TODO: Button loading state
-// TODO: Disable form on Success, with button to 'send another message'
-// TODO: Throttle sending on success
-// TODO: Validate emails
-// TODO: Block submit on 'Enter'
 // TODO: Change to own server
-
-const ERROR = 'There was an error! Please let me know: james@digitalanimal.com'
-const SUCCESS = "Sent! We'll be in touch soon"
 
 async function handleForm(event: SubmitEvent): Promise<void> {
   const form = event.target
-  const message = select(document, '#message')
   if (!(form instanceof HTMLFormElement)) throw new Error('Form error')
 
-  try {
-    const res = await emailjs.sendForm(
-      import.meta.env.VITE_SERVICE_ID,
-      import.meta.env.VITE_TEMPLATE_ID,
-      form,
-    )
+  const alert = select(form, '#alert')
+  const name = select<HTMLInputElement>(form, 'input[name="name"]')
+  const email = select<HTMLInputElement>(form, 'input[name="email"]')
+  const message = select<HTMLInputElement>(form, 'textarea[name="message"]')
 
-    if (res) {
-      message.innerText = SUCCESS
-      return
-    }
-  } catch {
-    message.innerText = ERROR
-    throw new Error('Error sending form!')
+  if (!name.value) {
+    alert.innerText = 'You must include a name.'
+    alert.style.color = '#ef4444'
+    return
   }
 
-  message.innerText = ERROR
+  if (!validate(email.value)) {
+    alert.innerText = 'Email is invalid.'
+    alert.style.color = '#ef4444'
+    return
+  }
+
+  const button = select<HTMLInputElement>(form, 'button')
+  button.innerText = 'Loading...'
+  button.disabled = true
+
+  const { status } = await emailjs.sendForm(
+    import.meta.env.VITE_SERVICE_ID,
+    import.meta.env.VITE_TEMPLATE_ID,
+    form,
+  )
+
+  if (status === 200) {
+    alert.innerText = 'Message sent! Thanks for getting in touch.'
+    alert.style.color = 'revert'
+  } else {
+    alert.innerText =
+      'There was an error! Please let me know: james@digitalanimal.com'
+    alert.style.color = '#ef4444'
+  }
+
+  button.remove()
+  name.disabled = true
+  email.disabled = true
+  message.disabled = true
 }
 
 export default function pageContact(): void {
@@ -48,26 +63,33 @@ export default function pageContact(): void {
     Drop us a line and we'll be in touch soon
   </h2>
 
-  <form id='contact' class='w-full space-y-6'>
-
+  <form id='contact' class='w-full space-y-6 disabled:opacity-70'>
     <x-input name='name' placeholder='Your name...'></x-input>
-
-    <x-input name='email' type='email' placeholder='Your email...'></x-input>
-
+    <x-input name='email' placeholder='Your email...'></x-input>
     <x-input name='message' type='textarea' placeholder='Tell us about it...'></x-input>
 
-    <button class='primary mx-auto w-fit' type='submit'>Send</button>
+    <button 
+      class='primary mx-auto w-fit disabled:pointer-events-none disabled:translate-x-[3px] disabled:translate-y-[3px] disabled:opacity-70 disabled:shadow-none'
+      type='submit'
+    >
+      Send
+    </button>
 
+    <p id='alert' class='text-balance text-xl font-bold'></p>
   </form>
-
-  <p id='message' class='text-balance text-xl font-bold'></p>
 </div>
 `
 
   emailjs.init({ publicKey: import.meta.env.VITE_PUBLIC_KEY })
 
-  select(page, '#contact').addEventListener('submit', (event) => {
+  const form = select(page, '#contact')
+
+  form.addEventListener('submit', (event) => {
     event.preventDefault()
     handleForm(event)
+  })
+
+  form.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') event.preventDefault()
   })
 }

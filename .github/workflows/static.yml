@@ -28,6 +28,12 @@ jobs:
         
       - name: Install dependencies
         run: yarn install
+
+      - name: Add secrets 
+        run: |
+          echo "VITE_PUBLIC_KEY=${{ secrets.VITE_PUBLIC_KEY }}" >> .env
+          echo "VITE_SERVICE_ID=${{ secrets.VITE_SERVICE_ID }}" >> .env
+          echo "VITE_TEMPLATE_ID=${{ secrets.VITE_TEMPLATE_ID }}" >> .env
         
       - name: Build
         run: yarn build
@@ -43,3 +49,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
