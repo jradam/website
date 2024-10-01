@@ -36,3 +36,29 @@ export function putTemplateInSlots(element: HTMLElement): void {
   if (!template) return
   slots.forEach((slot) => slot.appendChild(template.content.cloneNode(true)))
 }
+
+// Process template literals to "create HTML"
+// This is mainly for syntax highlighting, since we aren't really modifying any values
+// By allowing and converting falsy values to strings, we can use short-circuits in our HTML (&&, ||)
+export function html(
+  strings: TemplateStringsArray,
+  ...values: Array<string | false | Record<string, string | false>>
+): string {
+  let result = ''
+  strings.forEach((string, index) => {
+    result += string // Add string literal
+
+    if (typeof values[index] !== 'object') {
+      result += values[index] || '' // Add corresponding value (or empty string if false)
+      return
+    }
+
+    // If we do pass an object as a value, we can do some magic to expand attributes
+    // e.g. { name } -> name='${name}'
+    for (const [key, value] of Object.entries(values[index])) {
+      result += value ? `${key}="${value}"` : ''
+    }
+  })
+
+  return result
+}

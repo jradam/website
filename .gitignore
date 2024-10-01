@@ -25,3 +25,6 @@ dist-ssr
 
 # Built CSS
 tw.css
+
+# Secrets
+.env
