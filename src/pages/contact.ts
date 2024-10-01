@@ -16,15 +16,17 @@ async function handleForm(event: SubmitEvent): Promise<void> {
 
   if (!name.value) {
     alert.innerText = 'You must include a name.'
-    alert.style.color = '#ef4444'
+    name.parentElement?.classList.add('error')
     return
   }
+  name.parentElement?.classList.remove('error')
 
   if (!validate(email.value)) {
     alert.innerText = 'Email is invalid.'
-    alert.style.color = '#ef4444'
+    email.parentElement?.classList.add('error')
     return
   }
+  email.parentElement?.classList.remove('error')
 
   const button = select<HTMLInputElement>(form, 'button')
   button.innerText = 'Loading...'
@@ -38,11 +40,10 @@ async function handleForm(event: SubmitEvent): Promise<void> {
 
   if (status === 200) {
     alert.innerText = 'Message sent! Thanks for getting in touch.'
-    alert.style.color = 'revert'
+    alert.classList.remove('text-red-500')
   } else {
     alert.innerText =
       'There was an error! Please let me know: james@digitalanimal.com'
-    alert.style.color = '#ef4444'
   }
 
   button.remove()
@@ -57,7 +58,7 @@ export default function pageContact(): void {
   page.innerHTML = `
 <x-title>Get in touch</x-title>
 
-<div class='max-w-96 mx-auto my-44 space-y-12 px-6 text-center'>
+<div class='max-w-96 mx-auto space-y-12 px-6 py-24 text-center md:my-44'>
 
   <h2 class='text-balance font-lilita text-3xl'>
     Drop us a line and we'll be in touch soon
@@ -75,7 +76,7 @@ export default function pageContact(): void {
       Send
     </button>
 
-    <p id='alert' class='text-balance text-xl font-bold'></p>
+    <p id='alert' class='text-balance text-xl font-bold text-red-500'></p>
   </form>
 </div>
 `

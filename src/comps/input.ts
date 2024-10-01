@@ -17,7 +17,7 @@ customElements.define(
 
       const label = html`
         <label
-          class="w-fit rounded-tl-md rounded-tr-md border-l-2 border-r-2 border-t-2 bg-white px-2 font-lilita text-base capitalize group-focus-within:bg-purple"
+          class="w-fit rounded-tl-md rounded-tr-md border-l-2 border-r-2 border-t-2 bg-white px-2 font-lilita text-base capitalize group-focus-within:bg-purple group-[.error]:border-red-500 group-[.error]:bg-red-500 group-[.error]:text-white"
           for="${name}"
         >
           ${name}
@@ -27,7 +27,7 @@ customElements.define(
       const isArea = type === 'textarea'
 
       const classes = twMerge(
-        'rounded-md rounded-tl-none border-2 p-2 font-gochi',
+        'rounded-md rounded-tl-none border-2 p-2 font-gochi group-[.error]:border-red-500',
         isArea && 'min-h-32',
       )
 
