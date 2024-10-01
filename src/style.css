@@ -52,4 +52,9 @@
   button.primary {
     @apply box press rounded-md px-4 py-2 font-lilita leading-tight bg-purple
   }
+
+  input, textarea {
+    box-shadow: -3px -3px 0px 0px #1f2937;
+    @apply border-2 rounded-md p-2
+  }
 }
