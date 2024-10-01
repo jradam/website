@@ -64,9 +64,9 @@ export default function pageContact(): void {
     Drop us a line and we'll be in touch soon
   </h2>
 
-  <form id='contact' class='w-full space-y-6 disabled:opacity-70'>
+  <form id='contact' class='w-full space-y-6 disabled:opacity-70' novalidate>
     <x-input name='name' placeholder='Your name...'></x-input>
-    <x-input name='email' placeholder='Your email...'></x-input>
+    <x-input name='email' type='email' placeholder='Your email...'></x-input>
     <x-input name='message' type='textarea' placeholder='Tell us about it...'></x-input>
 
     <button 
