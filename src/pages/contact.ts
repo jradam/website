@@ -42,7 +42,7 @@ async function handleForm(event: SubmitEvent): Promise<void> {
     alert.innerText = 'Message sent! Thanks for getting in touch.'
     alert.classList.remove('text-red-500')
   } else {
-    alert.innerHTML = `There was an error! Please let me know: <a href='mailto:james@digitalanimal.com'>james@digitalanimal.com</a>`
+    alert.innerHTML = `There was an error! Please let me know: <a class='underline' href='mailto:james@digitalanimal.com'>james@digitalanimal.com</a>`
   }
 
   button.remove()
