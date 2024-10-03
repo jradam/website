@@ -31,6 +31,10 @@
     @apply font-manrope;
   }
 
+  a {
+    @apply underline
+  }
+
   .box {
     box-shadow: 3px 3px 0 0 #1f2937;
     @apply border-2;
