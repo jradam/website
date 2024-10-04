@@ -90,6 +90,11 @@ export default function pageContact(): void {
   })
 
   form.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') event.preventDefault()
+    const textArea =
+      event.target instanceof HTMLElement && event.target.tagName === 'TEXTAREA'
+
+    if (event.key === 'Enter' && !textArea) {
+      event.preventDefault()
+    }
   })
 }
