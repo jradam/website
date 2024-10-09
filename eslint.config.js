@@ -27,7 +27,7 @@ export default [
       'prefer-const': 'error',
       eqeqeq: 'error',
 
-      // BUG: Currently broken as per: https://github.com/43081j/eslint-plugin-wc/issues/139
+      // TODO: Remove this and fix errors
       'wc/no-child-traversal-in-connectedcallback': 'off',
       // Allowing direct class manipulation for simplicity
       'wc/no-self-class': 'off',
