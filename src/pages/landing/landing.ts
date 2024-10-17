@@ -16,7 +16,9 @@ export default function pageLanding(): void {
     <button class='primary' id='buttonContact'>Get in touch</x-button>
   </div>
 
-  <img id='arrow' class='absolute bottom-6 mx-auto w-4 duration-100 sm:bottom-8 sm:w-6' src="${arrow}" />
+  <button id='buttonArrow' class='absolute bottom-2 mx-auto flex h-10 w-10 items-center justify-center duration-500 sm:bottom-4'>
+    <img class='w-5 sm:w-6' src="${arrow}" />
+  </button>
 </div>
 `
   // Init the buttons
@@ -25,6 +27,9 @@ export default function pageLanding(): void {
   })
   select(page, '#buttonContact').addEventListener('click', () => {
     select(document, '#pageContact').scrollIntoView({ behavior: 'smooth' })
+  })
+  select(page, '#buttonArrow').addEventListener('click', () => {
+    select(document, '#pageAbout').scrollIntoView({ behavior: 'smooth' })
   })
 
   // The parallax animation
@@ -41,8 +46,14 @@ export default function pageLanding(): void {
     requestAnimationFrame(updateParallax)
 
     // Fade out the arrow with scroll
-    const opacity = 2 - container.scrollTop / 100
-    select(page, '#arrow').style.opacity = opacity.toString()
+    const arrow = select(page, '#buttonArrow')
+    if (container.scrollTop > 100) {
+      arrow.style.opacity = '0'
+      arrow.style.pointerEvents = 'none'
+    } else {
+      arrow.style.opacity = '1'
+      arrow.style.pointerEvents = 'all'
+    }
   }
 
   container.addEventListener('scroll', update, { passive: true })
