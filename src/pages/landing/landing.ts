@@ -1,6 +1,7 @@
 import { select } from '../../scripts/helpers'
 import logo from './logo.png'
 import './typer'
+import arrow from './arrow.svg'
 
 export default function pageLanding(): void {
   const page = select(document, '#pageLanding')
@@ -14,6 +15,8 @@ export default function pageLanding(): void {
     <button class='secondary' id='buttonAbout'>Learn more</button>
     <button class='primary' id='buttonContact'>Get in touch</x-button>
   </div>
+
+  <img id='arrow' class='absolute bottom-4 mx-auto w-6 duration-100 sm:bottom-8 sm:w-8' src='${arrow}' />
 </div>
 `
   // Init the buttons
@@ -36,6 +39,10 @@ export default function pageLanding(): void {
   }
   const update = (): void => {
     requestAnimationFrame(updateParallax)
+
+    // Fade out the arrow with scroll
+    const opacity = 2 - container.scrollTop / 100
+    select(page, '#arrow').style.opacity = opacity.toString()
   }
 
   container.addEventListener('scroll', update, { passive: true })
