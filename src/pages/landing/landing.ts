@@ -16,7 +16,7 @@ export default function pageLanding(): void {
     <button class='primary' id='buttonContact'>Get in touch</x-button>
   </div>
 
-  <img id='arrow' class='absolute bottom-4 mx-auto w-6 duration-100 sm:bottom-8 sm:w-8' src='${arrow}' />
+  <img id='arrow' class='absolute bottom-6 mx-auto w-4 duration-100 sm:bottom-8 sm:w-6' src="${arrow}" />
 </div>
 `
   // Init the buttons
