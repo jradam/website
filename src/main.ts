@@ -11,8 +11,6 @@ import { checkForDuplicateIDs } from './scripts/helpers'
 import { saveScroll } from './scripts/scroll'
 import './tw.css'
 
-// TODO: Add simple contact form
-// TODO: Add CV to About section
 // TODO: Evaluate using Axe-core
 // TODO: Get perfect score with Lighthouse, heytony etc
 // TODO: Enforce double quotes for HTML attributes

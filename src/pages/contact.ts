@@ -4,6 +4,9 @@ import emailjs from '@emailjs/browser'
 import { validate } from 'email-validator'
 
 // TODO: Change to own server
+// TODO: Button should go red on invalid
+// TODO: Labels fade on submit too?
+// TODO: Add animal pun
 
 async function handleForm(event: SubmitEvent): Promise<void> {
   const form = event.target
