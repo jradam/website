@@ -15,7 +15,7 @@ export default function pageTestimonials(): void {
 <div class='py-24 md:py-44'>
   <x-carousel>
     <x-slide>
-      <x-quote image='${phil}' color='#5e9df1' name='Phil Callan' company='One Tree Software'>
+      <x-quote image='${phil}' color='#96b76b' name='Phil Callan' company='One Tree Software'>
         James is a great asset to any digital team: smart, knowledgeable, quick, efficient and personable. In addition to good technical skills he is also able to understand and interpret the business need. Highly recommended.
       </x-quote>
     </x-slide>
@@ -25,7 +25,7 @@ export default function pageTestimonials(): void {
       </x-quote>
     </x-slide>
     <x-slide>
-      <x-quote image='${danny}' color='#96b76b' name='Danny' company='Website client'>
+      <x-quote image='${danny}' color='#5e9df1' name='Danny' company='Website client'>
         Digital Animal were fantastic - they delivered exactly what I asked for and dealt with my amendments promptly and enthusiastically. 
       </x-quote>
     </x-slide>
