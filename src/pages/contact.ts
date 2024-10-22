@@ -63,7 +63,7 @@ export default function pageContact(): void {
   page.innerHTML = `
 <x-title>Get in touch</x-title>
 
-<div class='max-w-96 min-h-dvh mx-auto flex flex-col items-center justify-center space-y-12 px-6 pb-16 pt-24 text-center'>
+<div class='max-w-96 min-h-dvh mx-auto flex flex-col items-center justify-center gap-y-6 px-6 pb-8 pt-16 text-center'>
 
   <h2 class='text-balance font-lilita text-3xl'>
     Drop us a line and we'll be in touch soon
