@@ -1,5 +1,6 @@
 import { select } from '../../scripts/helpers'
 import './carousel'
+import danny from './danny.png'
 import ed from './ed.png'
 import phil from './phil.png'
 import './quote'
@@ -20,7 +21,12 @@ export default function pageTestimonials(): void {
     </x-slide>
     <x-slide>
       <x-quote image='${ed}' color='#ff9482' name='Ed Cox' company='Rattle &amp; Shake'>
-        Digital Animal designed and implemented a sophisticated new website for us. Since launching we’ve seen a significant increase in business. James’ creative approach made all the difference, and we couldn’t be happier with the results.
+        Digital Animal implemented a sophisticated new website for us. Since launching we’ve seen a significant increase in business, and James’ creative approach made all the difference. We couldn’t be happier with the results!
+      </x-quote>
+    </x-slide>
+    <x-slide>
+      <x-quote image='${danny}' color='#96b76b' name='Danny' company='Website client'>
+        Digital Animal were fantastic - they delivered exactly what I asked for and dealt with my amendments promptly and enthusiastically. 
       </x-quote>
     </x-slide>
   </x-carousel>
