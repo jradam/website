@@ -13,26 +13,29 @@ async function handleForm(event: SubmitEvent): Promise<void> {
   if (!(form instanceof HTMLFormElement)) throw new Error('Form error')
 
   const alert = select(form, '#alert')
-  const name = select<HTMLInputElement>(form, 'input[name="name"]')
-  const email = select<HTMLInputElement>(form, 'input[name="email"]')
-  const message = select<HTMLInputElement>(form, 'textarea[name="message"]')
+  const nameInput = select<HTMLInputElement>(form, 'input[name="name"]')
+  const emailInput = select<HTMLInputElement>(form, 'input[name="email"]')
+  const messageInput = select<HTMLInputElement>(
+    form,
+    'textarea[name="message"]',
+  )
 
-  if (!name.value) {
+  if (!nameInput.value) {
     alert.innerText = 'You must include a name.'
-    name.parentElement?.classList.add('error')
+    nameInput.parentElement?.classList.add('error')
     return
   }
-  name.parentElement?.classList.remove('error')
+  nameInput.parentElement?.classList.remove('error')
 
-  if (!validate(email.value)) {
+  if (!validate(emailInput.value)) {
     alert.innerText = 'Email is invalid.'
-    email.parentElement?.classList.add('error')
+    emailInput.parentElement?.classList.add('error')
     return
   }
-  email.parentElement?.classList.remove('error')
+  emailInput.parentElement?.classList.remove('error')
 
   const button = select<HTMLInputElement>(form, 'button')
-  button.innerText = 'Loading...'
+  button.innerText = 'Sending...'
   button.disabled = true
 
   const { status } = await emailjs.sendForm(
@@ -49,9 +52,9 @@ async function handleForm(event: SubmitEvent): Promise<void> {
   }
 
   button.remove()
-  name.disabled = true
-  email.disabled = true
-  message.disabled = true
+  nameInput.disabled = true
+  emailInput.disabled = true
+  messageInput.disabled = true
 }
 
 export default function pageContact(): void {
@@ -60,7 +63,7 @@ export default function pageContact(): void {
   page.innerHTML = `
 <x-title>Get in touch</x-title>
 
-<div class='max-w-96 mx-auto space-y-12 px-6 py-24 text-center md:my-44'>
+<div class='max-w-96 min-h-dvh mx-auto flex flex-col items-center justify-center space-y-12 px-6 pb-16 pt-24 text-center'>
 
   <h2 class='text-balance font-lilita text-3xl'>
     Drop us a line and we'll be in touch soon
@@ -78,7 +81,7 @@ export default function pageContact(): void {
       Send
     </button>
 
-    <p id='alert' class='text-balance text-xl font-bold text-red-500'></p>
+    <p id='alert' class='text-balance min-h-7 text-xl font-bold text-red-500'></p>
   </form>
 </div>
 `
