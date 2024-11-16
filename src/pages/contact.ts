@@ -20,19 +20,26 @@ async function handleForm(event: SubmitEvent): Promise<void> {
     'textarea[name="message"]',
   )
 
+  // Reset the form if this is not the first submission attempt
+  nameInput.parentElement?.classList.remove('error')
+  emailInput.parentElement?.classList.remove('error')
+  messageInput.parentElement?.classList.remove('error')
+
   if (!nameInput.value) {
     alert.innerText = 'You must include a name.'
     nameInput.parentElement?.classList.add('error')
     return
   }
-  nameInput.parentElement?.classList.remove('error')
-
   if (!validate(emailInput.value)) {
     alert.innerText = 'Email is invalid.'
     emailInput.parentElement?.classList.add('error')
     return
   }
-  emailInput.parentElement?.classList.remove('error')
+  if (!messageInput.value) {
+    alert.innerText = 'You must include a message.'
+    messageInput.parentElement?.classList.add('error')
+    return
+  }
 
   const button = select<HTMLInputElement>(form, 'button')
   button.innerText = 'Sending...'
